@@ -9,7 +9,7 @@
     <version>1.0.0</version>
     <modules>
         <module>../whj-po</module>
-        <module>../whj-croe</module>
+        <module>../whj-core</module>
         <module>../whj-web</module>
     </modules>
     <properties>
