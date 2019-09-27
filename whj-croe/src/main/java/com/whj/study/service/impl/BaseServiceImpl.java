@@ -28,6 +28,10 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
     @PersistenceContext
     protected EntityManager em;
 
+    /**
+     * 获取BaseDao
+     * @return
+     */
     public abstract BaseDao<T, ID> getGenericDao();
 
     @SuppressWarnings("unchecked")
@@ -40,7 +44,7 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
 
     @Override
     public T getById(ID id) {
-        return getGenericDao().findOne(id);
+        return getGenericDao().findById(id).get();
     }
 
     @Override
@@ -74,7 +78,7 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
 
     @Override
     public List<T> getList(Iterable<ID> ids) {
-        return getGenericDao().findAll(ids);
+        return getGenericDao().findAllById(ids);
     }
 
     @Override
@@ -124,7 +128,7 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
 
     @Override
     public boolean exists(ID id) {
-        return getGenericDao().exists(id);
+        return getGenericDao().existsById(id);
     }
 
     @Override
@@ -146,25 +150,25 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
     @Override
     @Transactional
     public List<T> save(Iterable<T> entities) {
-        return getGenericDao().save(entities);
+        return getGenericDao().saveAll(entities);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void flush() {
         getGenericDao().flush();
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public T saveAndFlush(T entity) {
         return getGenericDao().saveAndFlush(entity);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void delete(ID id) {
-        getGenericDao().delete(id);
+        getGenericDao().deleteById(id);
     }
 
     @Override
@@ -176,7 +180,7 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
     @Override
     @Transactional
     public void delete(Iterable<T> entities) {
-        getGenericDao().delete(entities);
+        getGenericDao().deleteAll(entities);
     }
 
     @Override
