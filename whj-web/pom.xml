@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>whj-parent</artifactId>
+        <groupId>com.whj.study</groupId>
+        <version>1.0.0</version>
+        <relativePath>../whj-parent/pom.xml</relativePath>
+    </parent>
+    <artifactId>whj-web</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>whj-web</name>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <!--相当于是一个web项目的聚合jar包的父项-->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 去掉springboot默认配置logback-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.whj.study</groupId>
+            <artifactId>whj-croe</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jeesys</groupId>
+            <artifactId>jeesys-common</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <!-- 模板引擎-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}-${package.dev}-${project.version}</finalName>
+        <!--<filters>-->
+        <!--<filter>src/main/resources/filters/${package.env}/${package.env}_dubbo.properties</filter>-->
+        <!--</filters>-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>filters/**</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>ro.isdc.wro4j</groupId>
+                <artifactId>wro4j-maven-plugin</artifactId>
+                <version>1.8.0</version>
+                <executions>
+                    <execution>
+                        <id>optimize-web-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <minimize>true</minimize>
+                    <destinationFolder>${project.build.outputDirectory}</destinationFolder>
+                    <contextFolder>${basedir}/src/main/resources</contextFolder>
+                    <wroManagerFactory>com.szr.framework.wro4j.CustomWroManagerFactory</wroManagerFactory>
+                    <ignoreMissingResources>false</ignoreMissingResources>
+                    <extraConfigFile>${basedir}/src/main/resources/config/wro4j-demo.properties</extraConfigFile>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.szr.framework.wro4j</groupId>
+                        <artifactId>wro4j-maven-plugin</artifactId>
+                        <version>1.0.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
