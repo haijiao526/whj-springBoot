@@ -19,8 +19,8 @@ public class DepartmentTest extends BaseTest {
     @Rollback(false)
     @Test
     public void saveDepartment() {
-         Department department = departmentService.getBydeptCode(7001);
-       // Department department = new Department();
+        // Department department = departmentService.getBydeptCode(7001);
+        Department department = new Department();
         department.setAdress("甘肃兰州");
         department.setDeptName("研发部");
         department.setLender("王小小");

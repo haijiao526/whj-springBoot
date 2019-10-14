@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
- * @author zhushunfu
+ * @author whj
  * @createtime 2017年2月12日 下午5:10:13
  * @todo 
  */

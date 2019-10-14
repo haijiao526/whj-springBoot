@@ -14,7 +14,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author zhushunfu
+ * @author whj
  * @createtime 2017年2月12日 下午5:10:13
  * @todo 
  */

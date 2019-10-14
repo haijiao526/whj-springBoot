@@ -27,7 +27,7 @@ public class Department extends BasePojo {
     @Column(name = "dept_lender",length = 20)
     private String lender;
 
-    @Column(name = "dept_code",length = 4,unique = true,nullable = false)
+    @Column(name = "dept_code",length = 4,unique = false,nullable = false)
     private Integer deptCode;
     /**
      * 一对多

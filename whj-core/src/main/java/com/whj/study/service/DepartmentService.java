@@ -9,4 +9,6 @@ import com.whj.study.pojo.Department;
 public interface DepartmentService extends BaseService<Department, String> {
 
     public Department getBydeptCode(Integer deptCode);
+
+    void insertIntoDB();
 }
