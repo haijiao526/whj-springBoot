@@ -21,7 +21,7 @@
         <compiler.target>1.7</compiler.target>
         <spring.boot.starter.data.jpa>2.1.4.RELEASE</spring.boot.starter.data.jpa>
         <lombok>1.18.8</lombok>
-        <hibernate.validator>5.1.0.Final</hibernate.validator>
+        <hibernate.validator>5.3.5.Final</hibernate.validator>
         <fastjson.version>1.2.29</fastjson.version>
         <druid>1.1.11</druid>
         <mysql.connector.java>5.1.47</mysql.connector.java>
