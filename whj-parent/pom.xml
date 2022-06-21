@@ -24,7 +24,7 @@
         <hibernate.validator>5.1.0.Final</hibernate.validator>
         <fastjson.version>1.2.29</fastjson.version>
         <druid>1.1.11</druid>
-        <mysql.connector.java>5.1.47</mysql.connector.java>
+        <mysql.connector.java>8.0.28</mysql.connector.java>
         <jackson.core>2.9.2</jackson.core>
         <jackson.annotations>2.9.2</jackson.annotations>
         <jackson.databind>2.9.2</jackson.databind>
